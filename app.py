@@ -13,12 +13,12 @@ with st.sidebar.expander('Входные тексты',expanded=True):
     input_size       = st.number_input('Количество собраний',min_value=1,value=2)
     text_collections = [st.file_uploader(f':blue[собрание текстов №{i}]', accept_multiple_files=True) for i in range(input_size)]
 
-with st.sidebar.expander('Настройки'):
-    option = st.selectbox(
-   "Модель токенизации",
-   ("Email", "Home phone", "Mobile phone"),
-   index=None,
-   placeholder="Select contact method...",)
+# with st.sidebar.expander('Настройки'):
+#     option = st.selectbox(
+#    "Модель токенизации",
+#    ("Email", "Home phone", "Mobile phone"),
+#    index=None,
+#    placeholder="Select contact method...",)
 if [] not in text_collections:
     nlp = t2i.NLP(text_collections, model_name="ru_core_news_lg")
     # st.write(nlp)
