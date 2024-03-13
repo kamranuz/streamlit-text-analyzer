@@ -1,0 +1,7 @@
+pandas==2.2.1
+numpy==1.26.4
+plotly==5.7.0
+streamlit==1.31.1
+pymorphy3==2.0.1
+spacy==3.7.4	
+https://github.com/explosion/spacy-models/releases/download/ru_core_news_lg-3.7.0/ru_core_news_lg-3.7.0.tar.gz
