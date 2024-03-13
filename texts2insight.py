@@ -1,6 +1,5 @@
 import pandas as pd
 import numpy as np
-# from io import StringIO
 import plotly.express as px
 import streamlit as st
 import spacy
@@ -15,9 +14,6 @@ from collections import Counter
 
 
 import pymorphy3
-# import nltk
-# from nltk.tokenize import sent_tokenize
-# from nltk.tokenize import word_tokenize
 
 
 
@@ -35,7 +31,7 @@ class NLP():
             self.corpus[i]     = spacy.tokens.Doc.from_docs([process(text.getvalue().decode('utf-8')) for text in collection])
             is_punct = (self.corpus[i].to_array([IS_PUNCT])==1) | (self.corpus[i].to_array([IS_SPACE])==1)
             
-            # matches = _get_matches(self.corpus[i])
+
             self.statistics_[i] = {
                                   'Lemm_all_freq_'       : {process.vocab[lemma].text: count  for lemma,count in self.corpus[i].count_by(LEMMA).items()},
 
@@ -87,13 +83,12 @@ class NLP():
         df = pd.DataFrame(self.statistics)
         df.columns = [f'Коллеция №{i}' for i in df.columns]
         # df = df.reset_index()
-        return df
+        return df   
     
     def make_freq_table(self):
         df = pd.DataFrame(self.statistics_)
-        # df.columns = [f'Коллеция №{i}' for i in df.columns]
-        # df = df.reset_index()
         return df    
+    
     def plot_pos_freq(self):
         df = pd.concat([pd.DataFrame(self.statistics_[i]['pos_freq_'],index=[i]) for i in self.statistics_])
         df = df.fillna(0)
@@ -108,7 +103,6 @@ class NLP():
                             )
         return fig
 
-    
     def plot_pos_types_freq(self, type):
         df = pd.concat([pd.DataFrame(self.statistics_[i][f'{type}'],index=[i]) for i in self.statistics_])
         df = df.fillna(0)
@@ -139,9 +133,6 @@ class NLP():
 
     def preview(self,i,k=500):
         return self.corpus[i][:k]
-    
-    # def calc_general(self):
-    #     self.corpus[0]._.set_extension = 1
 
     def calc_morph(self):
         pass

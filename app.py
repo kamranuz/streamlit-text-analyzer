@@ -1,23 +1,13 @@
 import texts2insight as t2i
-import pandas as pd
-import numpy as np
 import streamlit as st
-# from io import StringIO
 from plotly.subplots import make_subplots
-
-import pymorphy3
-import nltk
-from nltk.tokenize import sent_tokenize
-from nltk.tokenize import word_tokenize
-
-nltk.download('punkt')
 
 
 st.config.set_option("theme.primaryColor", '#09A3D5')
 
 # --------- SIDEBAR ---------
 st.sidebar.title('Texts2️⃣Insight')
-st.sidebar.write('nltk | pymorphy3 | spacy')
+st.sidebar.write('streamlit | pymorphy3 | spacy ')
 
 with st.sidebar.expander('Входные тексты',expanded=True):
     input_size       = st.number_input('Количество собраний',min_value=1,value=2)
@@ -45,9 +35,9 @@ if [] not in text_collections:
         st.write('Первые 100 токенов:')
         st.write(nlp.preview(i))
         
-    # st.write(nlp.corpus[0]._)
     st.header('Общая статистика')
     st.write(nlp.make_stats_table())
+
     st.header('Лексика')
     st.write(nlp.make_freq_table().T['Несловарные слова_'])
     cols =st.columns(3)
@@ -71,7 +61,5 @@ if [] not in text_collections:
     # st.header('Морфология')
     # st.header('Анализ схожести')
     # st.header('Генератор текста')
-
-    # st.write(text_collections)
 
 
