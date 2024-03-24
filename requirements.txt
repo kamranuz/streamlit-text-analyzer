@@ -1,6 +1,6 @@
 pandas==2.2.1
 numpy==1.26.4
-plotly==5.7.0
+plotly==5.19.0
 streamlit==1.31.1
 pymorphy3==2.0.1
 spacy==3.7.4	
